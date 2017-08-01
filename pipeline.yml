@@ -39,10 +39,10 @@ jobs:
         source:
           insecure_registries: [ {{insecure-docker-registries}} ]
           repository: {{alpine_image}}
-        inputs:
+        input:
         - source
         - bosh2-cli
-        outputs:
+        output:
         - bosh-cli-version
       run:
         path: source/tasks/get-cli-version.sh
