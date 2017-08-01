@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/sh -e
 
 OUTPUT_DIR=`pwd`/bosh-cli-version
 SOURCE_DIR=`pwd`/source
