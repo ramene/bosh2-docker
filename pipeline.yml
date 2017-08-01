@@ -44,8 +44,8 @@ jobs:
         - bosh2-cli
         outputs:
         - bosh-cli-version
-    run:
-      path: source/tasks/get-cli-version.sh
+      run:
+        path: source/tasks/get-cli-version.sh
   - put: docker-registry
     params:
       build_args_file: bosh-cli-version/version.json
