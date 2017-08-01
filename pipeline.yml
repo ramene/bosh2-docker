@@ -1,0 +1,52 @@
+---
+resources:
+- name: source
+  type: git
+  source:
+    uri: {{bosh2-docker-git-repo}}
+    branch: master
+    username: {{git-username}}
+    password: {{git-password}}
+
+- name: bosh2-cli
+  type: github-release
+  source:
+    owner: cloudfoundry
+    repository: bosh-cli
+    access_token: {{github-access-token}}
+
+- name: docker-registry
+  type: docker-image
+  source:
+    repository: {{bosh2-docker-repository}}
+    username: {{docker-registry-username}}
+    password: {{docker-registry-password}}
+    insecure_registries: {{insecure-docker-registries}}
+
+jobs:
+- name: build-docker-image
+  public: true
+  plan:
+  - aggregate:
+    - get: source
+      trigger: true
+    - get: bosh2-cli
+      trigger: true
+  - task: get-cli-version
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          insecure_registries: {{insecure-docker-registries}}
+          repository: {{alpine_image}}
+        inputs:
+        - source
+        - bosh2-cli
+        outputs:
+        - bosh-cli-version
+        run:
+          path: source/tasks/get-cli-version.sh
+  - put: docker-registry
+    params:
+      build_args_file: bosh-cli-version/version.json
