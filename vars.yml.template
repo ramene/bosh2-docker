@@ -1,8 +1,4 @@
 bosh2-docker-git-repo:
-git-username:
-git-password:
-
-github-access-token:
 
 bosh2-docker-repository:
 docker-registry-username:
