@@ -20,7 +20,7 @@ resources:
     repository: {{bosh2-docker-repository}}
     username: {{docker-registry-username}}
     password: {{docker-registry-password}}
-    insecure_registries: {{insecure-docker-registries}}
+    insecure_registries: [ {{insecure-docker-registries}} ]
 
 jobs:
 - name: build-docker-image
@@ -37,15 +37,15 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          insecure_registries: {{insecure-docker-registries}}
+          insecure_registries: [ {{insecure-docker-registries}} ]
           repository: {{alpine_image}}
         inputs:
         - source
         - bosh2-cli
         outputs:
         - bosh-cli-version
-        run:
-          path: source/tasks/get-cli-version.sh
+    run:
+      path: source/tasks/get-cli-version.sh
   - put: docker-registry
     params:
       build_args_file: bosh-cli-version/version.json
