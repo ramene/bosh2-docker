@@ -1,14 +1,17 @@
 #!/bin/sh -e
 
-OUTPUT_DIR=`pwd`/bosh-cli-version
+OUTPUT_DIR=`pwd`/bosh-cli-bosh_cli_version
 SOURCE_DIR=`pwd`/source
-RELEASE_DIR=`pwd`/bosh2-cli
+BOSH_RELEASE_DIR=`pwd`/bosh2-cli
+CREDHUB_RELEASE_DIR=`pwd`/credhub-cli
 
-version=`cat ${RELEASE_DIR}/version | sed -e 's/^v//'`
+bosh_cli_version=`cat ${BOSH_RELEASE_DIR}/version | sed -e 's/^v//'`
+credhub_cli_version=`cat ${CREDHUB_RELEASE_DIR}/version`
 
-cat <<EOF > $OUTPUT_DIR/version.json
+cat <<EOF > $OUTPUT_DIR/bosh_cli_version.json
 {
-  "version": "${version}",
+  "bosh_cli_version": "${bosh_cli_version}",
+  "credhub_cli_version": "${credhub_cli_version}",
   "http_proxy": "${http_proxy}",
   "https_proxy": "${https_proxy}"
 }

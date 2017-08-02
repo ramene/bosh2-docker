@@ -14,6 +14,13 @@ resources:
     owner: cloudfoundry
     repository: bosh-cli
 
+- name: credhub-cli
+  type: github-release
+  check_every: 12h
+  source:
+    owner: cloudfoundry-incubator
+    repository: credhub-cli
+
 - name: docker-registry
   type: docker-image
   source:
@@ -31,6 +38,8 @@ jobs:
       trigger: true
     - get: bosh2-cli
       trigger: true
+    - get: credhub-cli
+      trigger: true
   - task: get-cli-version
     config:
       platform: linux
@@ -42,6 +51,7 @@ jobs:
       inputs:
       - name: source
       - name: bosh2-cli
+      - name: credhub-cli
       outputs:
       - name: bosh-cli-version
       run:
