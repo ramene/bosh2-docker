@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-OUTPUT_DIR=`pwd`/bosh-cli-bosh_cli_version
+OUTPUT_DIR=`pwd`/bosh-cli-version
 SOURCE_DIR=`pwd`/source
 BOSH_RELEASE_DIR=`pwd`/bosh2-cli
 CREDHUB_RELEASE_DIR=`pwd`/credhub-cli
