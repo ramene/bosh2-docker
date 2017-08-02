@@ -8,7 +8,7 @@ CREDHUB_RELEASE_DIR=`pwd`/credhub-cli
 bosh_cli_version=`cat ${BOSH_RELEASE_DIR}/version | sed -e 's/^v//'`
 credhub_cli_version=`cat ${CREDHUB_RELEASE_DIR}/version`
 
-cat <<EOF > $OUTPUT_DIR/bosh_cli_version.json
+cat <<EOF > $OUTPUT_DIR/version.json
 {
   "bosh_cli_version": "${bosh_cli_version}",
   "credhub_cli_version": "${credhub_cli_version}",
