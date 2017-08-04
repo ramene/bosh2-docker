@@ -12,6 +12,7 @@ resources:
   source:
     owner: cloudfoundry
     repository: bosh-cli
+    access_token: {{github-token}}
 
 - name: credhub-cli
   type: github-release
@@ -19,6 +20,7 @@ resources:
   source:
     owner: cloudfoundry-incubator
     repository: credhub-cli
+    access_token: {{github-token}}
 
 - name: docker-registry
   type: docker-image
