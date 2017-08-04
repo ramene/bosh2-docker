@@ -12,5 +12,5 @@ RUN apt-get update -y && \
     tar zxvf credhub-linux-${credhub_cli_version}.tgz && install credhub /usr/local/bin/credhub && \
     wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64 && \
     install bosh-cli-${bosh_cli_version}-linux-amd64 /usr/local/bin/bosh && \
-    pip install python-openstackclient && \
+    easy_install pip && pip install python-openstackclient && \
     apt-get clean
