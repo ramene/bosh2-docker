@@ -2,7 +2,6 @@
 resources:
 - name: source
   type: git
-  check_every: 12h
   source:
     uri: {{bosh2-docker-git-repo}}
     branch: master
